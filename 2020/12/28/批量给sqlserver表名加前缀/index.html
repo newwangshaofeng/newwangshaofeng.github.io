@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>使用hexo生成个人博客 | wangshaofeng的个人博客</title>
-  <meta name="keywords" content=" hexo ">
-  <meta name="description" content="使用hexo生成个人博客 | wangshaofeng的个人博客">
+  <title>批量给sqlserver表名加前缀 | wangshaofeng的个人博客</title>
+  <meta name="keywords" content=" sqlserver , 数据库 ">
+  <meta name="description" content="批量给sqlserver表名加前缀 | wangshaofeng的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="背景最近工作中,需要给sqlserver的表加上前缀,网上查找了一番,最终找到了下面的方法. 使用方式sqlserver 批量修改表前缀 先把第一句话放到sqlserver查询器中执行一下.然后把查询结果复制出来,进行编辑…一看你就懂了..简单的sql语句拼装 select ‘ exec sp_rename “‘ + name + ‘“,”new’+ name +’”,”object” ‘ fro">
 <meta property="og:type" content="article">
@@ -291,9 +291,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-使用hexo生成个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-批量给sqlserver表名加前缀" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">使用hexo生成个人博客</h1>
+        <h1 class="article-title">批量给sqlserver表名加前缀</h1>
     
     <div class="article-meta">
         
@@ -303,7 +303,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="工具">工具</a>
+            <a  data-rel="数据库">数据库</a>
             
         </span>
         
@@ -311,14 +311,16 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">hexo</a>
+            <a class="color5">sqlserver</a>
+            
+            <a class="color4">数据库</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-27 09:42:20'>2020-12-26 21:21</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-28 08:50:53'>2020-12-28 08:42</time>
         
     </div>
     <div class="article-meta">
@@ -340,7 +342,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">如何使用hexo搭建一个个人博客?</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">使用方式</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -356,15 +358,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="如何使用hexo搭建一个个人博客"><a href="#如何使用hexo搭建一个个人博客" class="headerlink" title="如何使用hexo搭建一个个人博客?"></a>如何使用hexo搭建一个个人博客?</h2><p>花了一天的时间,使用hexo搭建了一个个人的博客,后面打算部分文章都用markdown记录后,发布到这里了.</p>
-<p>这是当时搭建过程中参考的一些资料.</p>
-<pre><code>https://hexo.io/zh-cn/docs/index.html
-
-https://wallleap.cn/
-
-http://yelog.org/2017/03/23/3-hexo-instruction/
-</code></pre>
-<p>可能不够详细,后面有时间了,再完善下.</p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近工作中,需要给sqlserver的表加上前缀,网上查找了一番,最终找到了下面的方法.</p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zinan/p/4424245.html">sqlserver 批量修改表前缀</a></p>
+<p>先把第一句话放到sqlserver查询器中执行一下.然后把查询结果复制出来,进行编辑…一看你就懂了..简单的sql语句拼装</p>
+<p>select ‘ exec sp_rename “‘ + name + ‘“,”new’+ name +’”,”object” ‘ from sysobjects<br>where xType= ‘U ‘ and name like ‘老的前缀_%’</p>
+<p>–0.把sql语句执行结果复制到记事本或者ue中<br>–1.替换 new老的前缀_ 为新的前缀名<br>–2.替换双引号为单引号.<br>–3.把改好的sql语句复制到查询器里面执行</p>
+<p> 如果没有前缀可以将 ‘老的前缀_%’改为’%%’</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1693476459@qq.com </span>
